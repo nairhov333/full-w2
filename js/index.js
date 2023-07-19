@@ -95,5 +95,60 @@ window.addEventListener("DOMContentLoaded", function () {
         
         setClock(".timer", deadline);
     // timer logic end
+    
+    // modal logic start
+    const modalTrigger = document.querySelectorAll("[data-modal]");
+    const modal = document.querySelector(".modal");
+    const modalCloseBtn = document.querySelector("[data-close]");
+    let flag = false;
+    
+    modalTrigger.forEach(btn => btn.addEventListener("click", openModal));
+    
+    modalCloseBtn.addEventListener("click", closeModal);
+
+    
+    modal.addEventListener("click", (e) => {
+        if(e.target === modal) {
+           closeModal();
+        }
+    });
+    
+    document.addEventListener("keydown", (e) => {
+        if(e.code === "Escape" && modal.matches(".show")) {
+        // if(e.key === "a" && modal.matches(".show")) { // տառերով փակելու համար code-ը key ենք գրում
+          closeModal();
+        }
+    });
+    
+    const modalTimerId = this.setTimeout(openModal, 2000);
+    
+    function showModalByScroll () {
+    // if (window.scrollY + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
+    //     openModal();
+    //     window.removeEventListener("scroll", showModalByScroll);
+    // }
+          
+          if (window.scrollY >= 2000 && flag === false) {
+            openModal();
+            window.removeEventListener("scroll", showModalByScroll);
+        }
+    }
+    
+    window.addEventListener("scroll", showModalByScroll);
+    
+    function openModal () {
+        flag === true;
+        modal.classList.add("show");
+        modal.classList.remove("hide");
+        document.body.style.overflow = "hidden";
+        clearTimeout(modalTimerId);
+    }
+    
+    function closeModal () {
+        modal.classList.add("hide");
+        modal.classList.remove("show");
+        document.body.removeAttribute("style");
+    }
+    // modal logic end
 });
 
