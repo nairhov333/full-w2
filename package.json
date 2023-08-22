@@ -1,0 +1,27 @@
+{
+  "name": "food-project",
+  "version": "1.0.9",
+  "description": "food project",
+  "main": "index.js",
+  "scripts": {
+   "serve" : "json-server --watch db.json --port 8888"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nairhov333/full-w2.git"
+  },
+  "keywords": [
+    "food",
+    "blog",
+    "front-end"
+  ],
+  "author": "group2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nairhov333/full-w2/issues"
+  },
+  "homepage": "https://github.com/nairhov333/full-w2#readme",
+  "devDependencies": {
+    "json-server": "^0.17.3"
+  }
+}
